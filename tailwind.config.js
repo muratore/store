@@ -14,7 +14,10 @@ module.exports = {
       },
       colors: {
         'dc-pink': '#C92071',
-        'dc-gray': '#474747'
+        'dc-gray': '#474747',
+        'dc-blue': '#D8E3F2',
+        'dc-yellow': '#E7FF86',
+        'dc-background': '#F9F8FE'
       }
     },
     

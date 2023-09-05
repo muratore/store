@@ -1,9 +1,10 @@
+
 const sale = [
   {
     header: "Melhores Ofertas Personalizadas",
     title: "Queima de stoque Nike 🔥",
     text: "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
-    urlImg: "White-Sneakers-PNG-Clipart1.png",
+    urlImg: "Air.png",
   },
   {
     header: "Melhores Ofertas Personalizadas",
@@ -15,7 +16,7 @@ const sale = [
     header: "Melhores Ofertas Personalizadas",
     title: "New Balance! Eleito o melhor para correr 🏃🏻‍♂️",
     text: "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
-    urlImg: "White-Sneakers-PNG-Clipart1.png",
+    urlImg: "fila.webp",
   },
   {
     header: "Melhores Ofertas Personalizadas",
@@ -23,6 +24,7 @@ const sale = [
     text: "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
     urlImg: "mizuno.png",
   },
+
 ];
 
 export default sale

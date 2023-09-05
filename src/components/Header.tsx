@@ -6,7 +6,7 @@ import ShoppingCart from "./templates/ShoppingCart"
 
 const Header = () => {
   return (
-    <div className="flex flex-col container  m-auto pt-5 px-32 pb-5">
+    <div className="flex flex-col container lg:px-10  m-auto pt-5 2xl:px-36 pb-5">
         {/* logo */}
        <div className="flex container m-auto">
        <Logo/>
