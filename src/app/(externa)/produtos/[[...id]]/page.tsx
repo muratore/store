@@ -7,7 +7,7 @@ import tennis from "../../../../../public/images/bestSelling/Layer1aa2.png";
 import Image from "next/image";
 import SelectedProduct from "@/components/SelectedProduct";
 
-const Page = (props: ProdutoProps) => {
+const Produto = (props: ProdutoProps) => {
   const id = props.params.id;
   const [produto, setProduto] = useState<ProdutoProps[]>();
 
@@ -80,4 +80,4 @@ const Page = (props: ProdutoProps) => {
   );
 };
 
-export default Page;
+export default Produto;
