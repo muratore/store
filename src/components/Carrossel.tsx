@@ -15,16 +15,14 @@ const Carrossel = () => {
 
   const [move, setMove] = useState(0);
   const [cor, setCor] = useState(0)
-
   //   const [windowWidth, SetWindowWidth] = useState();
-
   const maxSlide = containerSlide * dataSale.length - containerSlide;
   // console.log(move);
   // console.log(maxSlide);
 
   setTimeout(() => {
     if (move >= maxSlide) {
-      console.log("caiu no maxSlide");
+      // console.log("caiu no maxSlide");
       setMove(0);
       setCor(0)
     } else {

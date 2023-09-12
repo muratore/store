@@ -1,5 +1,0 @@
-DB_USER=muratore
-DB_PASSWORD=aNkHKw103t33vUnt
-
-
-// mongodb+srv://muratore:<password>@cluster0.bqrwhpf.mongodb.net/?retryWrites=true&w=majority

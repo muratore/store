@@ -11,7 +11,7 @@ const MenuItem = (props: MenuItemProps) => {
     <Link
       href={props.url}
       className={`
-    hover:text-dc-pink hover:underline underline-offset-4 hover:font-semibold cursor-pointer
+    hover:text-dc-pink hover:font-semibold cursor-pointer
      ${props.selecionado ? "text-dc-pink font-bold border-b-2 border-dc-pink" : "text-dc-gray"}
     `}
     >

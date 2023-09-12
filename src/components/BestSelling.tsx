@@ -1,5 +1,4 @@
 "use client";
-import bestSelling from "../data/bestSelling";
 import CardBestSelling from "./templates/CardBestSelling";
 import Image from "next/image";
 import HeaderSection from "./templates/HeaderSection";
@@ -7,44 +6,50 @@ import { useEffect, useState } from "react";
 import { Types } from 'mongoose';
 import axios from "axios";
 import tenis from '../../public/images/bestSelling/Layer1aa2.png'
+import { IconArrowAutofitRight } from "@tabler/icons-react";
+import Link from "next/link";
+import { ProdutoProps } from "@/interfaces/ProdutoProps";
 
 
-interface ProdutoProps {
-  nome:string 
-  preco:number
-  desconto:number
-  genero: {_id: Types.ObjectId, nome:string, codigo:number} 
-}
 const BestSelling = () => {
-
   const [produto, setProduto] = useState<ProdutoProps[]>();
 
   const buscarProdutos = async () => {
-    const response = await axios.get("http://localhost:5005/produtos");
-    console.log("response", response.data);
-    setProduto(response.data);
+    const response = await axios.get("http://localhost:5008/produtos");
+    const Items = response.data
+
+console.log(Items.slice(0,4));
+
+    
+    setProduto(response.data.slice(0,4));
   };
 
   useEffect(() => {
     buscarProdutos();
 
   }, []);
- 
-  console.log(produto);
+
   
   return (
     <div className="container bg-dc-background m-auto px-28 py-16">
-      <HeaderSection className=" text-center" text="Mais vendidos" />
+      <div className=" flex justify-between">
+
+      <HeaderSection className=" text-center" text="Mais vendidos" />     
+        <Link href={`/produtos`} className="flex gap-2 text-dc-pink">   
+         Ver Todos <IconArrowAutofitRight/>
+        </Link>
+      </div>
     
       <div className="flex flex-wrap justify-center gap-5">
 
       {produto && produto.map((item, i)=>(
         <>
             <CardBestSelling
+            _id={item._id}
             nome={`${item.nome} | ${item.genero.nome}`}
             preco={item.preco}
-            onSale={item.desconto}
-            salePrice={+(item.preco - (item.desconto * item.preco / 100)).toFixed(2)}
+            onSale={+item.desconto}
+            salePrice={+((item.preco - (item.desconto * item.preco / 100)))}
             desconto
             img={
               <Image
@@ -57,25 +62,6 @@ const BestSelling = () => {
             /> 
         </>
       ))}
-        {/* {bestSelling.map((item, i) => (
-          <CardBestSelling
-            discount={item.discount}
-            tag={item.tag}
-            onSale={80}
-            img={
-              <Image
-                alt={item.description}
-                src={`/images/bestSelling/${item.img}`}
-                width={248}
-                height={134}
-              />
-            }
-            key={i}
-            preco={item.price}
-            salePrice={item.salePrice}
-            description={item.description}
-          />
-        ))} */}
       </div>
     </div>
   );

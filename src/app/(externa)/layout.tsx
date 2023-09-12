@@ -5,8 +5,11 @@ import React from 'react'
 const layout = (props:any) => {
   return (
     <div >
-         <Header />
+        <Header />
+        
+
         {props.children}
+        
         <Footer />
     </div>
   )

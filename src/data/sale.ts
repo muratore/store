@@ -16,14 +16,14 @@ const sale = [
     header: "Melhores Ofertas Personalizadas",
     title: "New Balance! Eleito o melhor para correr 🏃🏻‍♂️",
     text: "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
-    urlImg: "fila.webp",
+    urlImg: "Air.png",
   },
   {
     header: "Melhores Ofertas Personalizadas",
     title: "Mizuno Wave! High Tecnology 😱",
     text: "Consequat culpa exercitation mollit nisi excepteur do do tempor laboris eiusmod irure consectetur.",
     urlImg: "mizuno.png",
-  },
+  }
 
 ];
 

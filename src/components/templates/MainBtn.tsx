@@ -5,8 +5,7 @@ interface MainBtnProps{
     color?:boolean
 }
 const MainBtn = (props:MainBtnProps) => {
-  return (
-    
+  return (  
         <button className={`
          px-6 py-2 rounded-md
          ${props.color ? ' text-black' : 'text-white'}
