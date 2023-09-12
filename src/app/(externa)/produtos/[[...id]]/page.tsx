@@ -1,11 +1,24 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { ProdutoProps } from "@/interfaces/ProdutoProps";
+// import { ProdutoProps } from "@/interfaces/ProdutoProps";
 import CardBestSelling from "@/components/templates/CardBestSelling";
 import tennis from "../../../../../public/images/bestSelling/Layer1aa2.png";
 import Image from "next/image";
 import SelectedProduct from "@/components/SelectedProduct";
+import { Types } from "mongoose";
+
+
+interface ProdutoProps {
+  _id: Types.ObjectId
+  nome:string 
+  preco:number
+  desconto:number
+  params?:any
+  image?:any
+  salePrice?: number
+  genero: {_id: Types.ObjectId, nome:string, codigo:number} 
+}
 
 const Produto = (props: ProdutoProps) => {
   const id = props.params.id;
