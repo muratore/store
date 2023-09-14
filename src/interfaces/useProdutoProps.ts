@@ -1,12 +1,14 @@
 import { Types } from "mongoose"
 
-export interface ProdutoProps {
+
+
+export type ProdutoProps = {
     _id: Types.ObjectId
     nome:string 
     preco:number
     desconto:number
-    params?:any
-    image?:any
+    params: { id: string }
     salePrice?: number
-    genero: {_id: Types.ObjectId, nome:string, codigo:number} 
+    genero: {_id:Types.ObjectId, nome:string, codigo: number}
   }
+  

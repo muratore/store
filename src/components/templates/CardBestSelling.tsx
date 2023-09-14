@@ -24,7 +24,6 @@ const CardBestSelling = (props: CardBestSellingProps) => {
         ) : (
           ""
         )}
-
         <div>
           <Link href={`/produtos/${props._id}`}>{props.img}</Link>
         </div>

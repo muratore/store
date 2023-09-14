@@ -1,19 +1,17 @@
-import { ProdutoProps } from "@/interfaces/ProdutoProps";
+import { ProdutoProps } from "@/interfaces/useProdutoProps";
 import Image from "next/image";
 import MainBtn from "./templates/MainBtn";
+import tennis from '../../public/images/bestSelling/Layer1aa2.png'
 
 const SelectedProduct = (props: ProdutoProps) => {
-
-
   return (
     <div className=" md:flex items-center my-8">
       {/* Div da imagem */}
-      <div className={` w-[50%] min-h-[250px]`}>
+      <div className={` w-[50%] min-h-[250px] `}>
         <Image
-          className=" w-full h-full"
-          objectFit="cover"
+          className=" w-full h-full object-cover"
           alt={props.nome}
-          src={props.image}
+          src={tennis}
         />
       </div>
       {/* ////////// */}
@@ -25,13 +23,33 @@ const SelectedProduct = (props: ProdutoProps) => {
         <div>{props.genero.nome}</div>
         <div>
           {" "}
-          <span >
-            {`${props.salePrice?.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}).slice(0,2)}`}
+          <span>
+            {`${props.salePrice
+              ?.toLocaleString("pt-BR", { style: "currency", currency: "BRL" })
+              .slice(0, 2)}`}
           </span>
           <span className=" text-3xl font-black">
-          {`${props.salePrice?.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}).split('$')[1].split(',')[0]}`}
+            {`${
+              props.salePrice
+                ?.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })
+                .split("$")[1]
+                .split(",")[0]
+            }`}
           </span>
-          <span>,{`${props.salePrice?.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'}).split(',')[1]}`}</span>
+          <span>
+            ,
+            {`${
+              props.salePrice
+                ?.toLocaleString("pt-BR", {
+                  style: "currency",
+                  currency: "BRL",
+                })
+                .split(",")[1]
+            }`}
+          </span>
         </div>
         <MainBtn className="mt-6" bg texto="Comprar agora" />
       </div>

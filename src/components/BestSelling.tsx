@@ -3,24 +3,20 @@ import CardBestSelling from "./templates/CardBestSelling";
 import Image from "next/image";
 import HeaderSection from "./templates/HeaderSection";
 import { useEffect, useState } from "react";
-import { Types } from 'mongoose';
 import axios from "axios";
 import tenis from '../../public/images/bestSelling/Layer1aa2.png'
 import { IconArrowAutofitRight } from "@tabler/icons-react";
 import Link from "next/link";
-import { ProdutoProps } from "@/interfaces/ProdutoProps";
+import {ProdutoProps} from '@/interfaces/useProdutoProps'
 
 
 const BestSelling = () => {
   const [produto, setProduto] = useState<ProdutoProps[]>();
 
   const buscarProdutos = async () => {
-    const response = await axios.get("http://localhost:5008/produtos");
+    const response = await axios.get("https://drip-store-api.onrender.com/produtos");
     const Items = response.data
-
-console.log(Items.slice(0,4));
-
-    
+  
     setProduto(response.data.slice(0,4));
   };
 
@@ -28,7 +24,6 @@ console.log(Items.slice(0,4));
     buscarProdutos();
 
   }, []);
-
   
   return (
     <div className="container bg-dc-background m-auto px-28 py-16">
@@ -43,8 +38,9 @@ console.log(Items.slice(0,4));
       <div className="flex flex-wrap justify-center gap-5">
 
       {produto && produto.map((item, i)=>(
-        <>
+       
             <CardBestSelling
+            key={i}
             _id={item._id}
             nome={`${item.nome} | ${item.genero.nome}`}
             preco={item.preco}
@@ -60,7 +56,7 @@ console.log(Items.slice(0,4));
               />
             }
             /> 
-        </>
+
       ))}
       </div>
     </div>

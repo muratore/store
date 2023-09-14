@@ -1,44 +1,35 @@
-"use client";
+'use client'
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { ProdutoProps } from "@/interfaces/ProdutoProps";
+import {ProdutoProps} from "@/interfaces/useProdutoProps";
 import CardBestSelling from "@/components/templates/CardBestSelling";
 import tennis from "../../../../../public/images/bestSelling/Layer1aa2.png";
 import Image from "next/image";
 import SelectedProduct from "@/components/SelectedProduct";
-import { Types } from "mongoose";
+import { Types } from "mongoose"
 
-
-interface ProdutoProps {
-  _id: Types.ObjectId
-  nome:string 
-  preco:number
-  desconto:number
-  params?:any
-  image?:any
-  salePrice?: number
-  genero: {_id: Types.ObjectId, nome:string, codigo:number} 
-}
-
-const Produto = (props: ProdutoProps) => {
+export default function Page(props:ProdutoProps) {
   const id = props.params.id;
+  console.log(id[0]);
+  
   const [produto, setProduto] = useState<ProdutoProps[]>();
 
   const buscarProdutos = async () => {
-    const response = await axios.get("http://localhost:5008/produtos");
+
+    const response = await axios.get(`https://drip-store-api.onrender.com/produtos`);
     const data: ProdutoProps[] = response.data;
 
-    console.log(data);
-
-    if (props.params.id !== undefined) {
-      const item = data.filter((item) => item._id == id);
-      console.log(item);
-
-      setProduto(item);
-      console.log(produto);
-    } else {
+    if (id) {
+      const produtoSelecionado = data.filter(item => String(item._id) === id[0] )
+     console.log(produtoSelecionado);
+     setProduto(produtoSelecionado)
+      
+      
+    }else{
+      
       setProduto(response.data);
     }
+
   };
 
   useEffect(() => {
@@ -52,10 +43,10 @@ const Produto = (props: ProdutoProps) => {
           {produto?.map((item, i) => (
             <SelectedProduct
               _id={item._id}
-              image={tennis}
               genero={item.genero}
               desconto={item.desconto}
               nome={item.nome}
+              params={item.params}
               salePrice={
                 +(item.preco - (item.desconto * item.preco) / 100).toFixed(2)
               }
@@ -71,7 +62,7 @@ const Produto = (props: ProdutoProps) => {
               <CardBestSelling
                 key={i}
                 _id={item._id}
-                nome={`${item.nome} | ${item.genero.nome}`}
+                nome={`${item.nome} | ${item.genero?.nome}`}
                 preco={+item.preco.toFixed(2)}
                 onSale={item.desconto}
                 desconto
@@ -93,4 +84,3 @@ const Produto = (props: ProdutoProps) => {
   );
 };
 
-export default Produto;
