@@ -54,7 +54,7 @@ export default function Page(props:any) {
                 preco={item.preco}
                 desconto={item.desconto} 
                 precoDesconto={item.preco}     
-                image={'https:source.unsplash.com/featured/299x250?sneakers'}
+                image={'http://source.unsplash.com/featured/299x250?sneakers'}
               />
             </>
           ))}
