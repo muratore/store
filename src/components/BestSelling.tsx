@@ -7,7 +7,7 @@ import axios from "axios";
 import tenis from '../../public/images/bestSelling/Layer1aa2.png'
 import { IconArrowAutofitRight } from "@tabler/icons-react";
 import Link from "next/link";
-import {ProdutoProps} from '@/interfaces/useProdutoProps'
+import ProdutoProps from '@/interfaces/ProdutoProps'
 
 
 const BestSelling = () => {
@@ -42,19 +42,11 @@ const BestSelling = () => {
             <CardBestSelling
             key={i}
             _id={item._id}
-            nome={`${item.nome} | ${item.genero.nome}`}
+            nome={`${item.nome} | ${item.genero?.nome}`}
             preco={item.preco}
-            onSale={+item.desconto}
-            salePrice={+((item.preco - (item.desconto * item.preco / 100)))}
-            desconto
-            img={
-              <Image
-                alt={item.nome}
-                src={tenis}
-                width={248}
-                height={134}
-              />
-            }
+            desconto={item.desconto}
+            precoDesconto={item.preco}
+            image="https:source.unsplash.com/featured/300x250?smeakers"
             /> 
 
       ))}

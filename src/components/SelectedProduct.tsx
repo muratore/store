@@ -1,4 +1,4 @@
-import { ProdutoProps } from "@/interfaces/useProdutoProps";
+import ProdutoProps from "@/interfaces/ProdutoProps";
 import Image from "next/image";
 import MainBtn from "./templates/MainBtn";
 import tennis from '../../public/images/bestSelling/Layer1aa2.png'
@@ -20,7 +20,7 @@ const SelectedProduct = (props: ProdutoProps) => {
       <div className={`w-[50%]`}>
         <div className=" p-3 font-black w-20 bg-dc-yellow rounded-sm mb-5">{`${props.desconto}%`}</div>
         <h2 className="text-2xl font-black md:text-5xl">{props.nome}</h2>
-        <div>{props.genero.nome}</div>
+        <div>{props.genero?.nome}</div>
         <div>
           {" "}
           <span>

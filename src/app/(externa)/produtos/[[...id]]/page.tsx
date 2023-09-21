@@ -1,35 +1,27 @@
 'use client'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {ProdutoProps} from "@/interfaces/useProdutoProps";
+import ProdutoProps from "@/interfaces/ProdutoProps";
 import CardBestSelling from "@/components/templates/CardBestSelling";
-import tennis from "../../../../../public/images/bestSelling/Layer1aa2.png";
-import Image from "next/image";
 import SelectedProduct from "@/components/SelectedProduct";
-import { Types } from "mongoose"
 
 export default function Page(props:ProdutoProps) {
-  const id = props.params.id;
-  console.log(id[0]);
-  
+  const id = props.params?.id;
+ 
   const [produto, setProduto] = useState<ProdutoProps[]>();
-
   const buscarProdutos = async () => {
 
     const response = await axios.get(`https://drip-store-api.onrender.com/produtos`);
     const data: ProdutoProps[] = response.data;
 
     if (id) {
-      const produtoSelecionado = data.filter(item => String(item._id) === id[0] )
+    const produtoSelecionado = data.filter(item => String(item._id) === id[0] )
      console.log(produtoSelecionado);
      setProduto(produtoSelecionado)
       
-      
-    }else{
-      
+    }else{ 
       setProduto(response.data);
     }
-
   };
 
   useEffect(() => {
@@ -38,7 +30,7 @@ export default function Page(props:ProdutoProps) {
 
   return (
     <div className=" container m-auto bg-dc-background py-8">
-      {props.params.id ? (
+      {props.params?.id ? (
         <div>
           {produto?.map((item, i) => (
             <SelectedProduct
@@ -47,9 +39,7 @@ export default function Page(props:ProdutoProps) {
               desconto={item.desconto}
               nome={item.nome}
               params={item.params}
-              salePrice={
-                +(item.preco - (item.desconto * item.preco) / 100).toFixed(2)
-              }
+              salePrice={item.preco - (item.desconto * item.preco) / 100}
               preco={item.preco}
               key={i}
             />
@@ -60,21 +50,12 @@ export default function Page(props:ProdutoProps) {
           {produto?.map((item, i) => (
             <>
               <CardBestSelling
-                key={i}
                 _id={item._id}
                 nome={`${item.nome} | ${item.genero?.nome}`}
-                preco={+item.preco.toFixed(2)}
-                onSale={item.desconto}
-                desconto
-                salePrice={+item.preco - (item.desconto * item.preco) / 100}
-                img={
-                  <Image
-                    alt={item.nome}
-                    src={tennis}
-                    width={248}
-                    height={134}
-                  />
-                }
+                preco={item.preco}
+                desconto={item.desconto} 
+                precoDesconto={item.preco}     
+                image={'https:source.unsplash.com/featured/299x250?sneakers'}
               />
             </>
           ))}
