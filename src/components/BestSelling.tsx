@@ -46,7 +46,7 @@ const BestSelling = () => {
             preco={item.preco}
             desconto={item.desconto}
             precoDesconto={item.preco}
-            image="https:source.unsplash.com/featured/300x250?smeakers"
+            image="http://source.unsplash.com/featured/300x250?smeakers"
             /> 
 
       ))}
