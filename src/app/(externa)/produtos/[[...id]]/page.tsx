@@ -1,18 +1,17 @@
 'use client'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import ProdutoProps from "@/interfaces/ProdutoProps";
 import CardBestSelling from "@/components/templates/CardBestSelling";
 import SelectedProduct from "@/components/SelectedProduct";
 
-export default function Page(props:ProdutoProps) {
+export default function Page(props:any) {
   const id = props.params?.id;
  
-  const [produto, setProduto] = useState<ProdutoProps[]>();
+  const [produto, setProduto] = useState<any[]>();
   const buscarProdutos = async () => {
 
     const response = await axios.get(`https://drip-store-api.onrender.com/produtos`);
-    const data: ProdutoProps[] = response.data;
+    const data: any[] = response.data;
 
     if (id) {
     const produtoSelecionado = data.filter(item => String(item._id) === id[0] )
